@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJE Lawn & Landscaping | Premium Lawn Care Services</title>
+    <style>
+        /* --- MODERN VARIABLES & THEME --- */
+        :root {
+            --primary: #4e9c27;
+            --primary-hover: #3d7e1e;
+            --bg-dark: #060f06;
+            --bg-card: #0d1f0d;
+            --bg-card-hover: #142f14;
+            --text-main: #ffffff;
+            --text-muted: #a0b2a0;
+            --accent-gold: #e2b13c;
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* --- PREMIUM BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: var(--radius);
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #63be34);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(78, 156, 39, 0.3);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(78, 156, 39, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background: rgba(6, 15, 6, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav ul li a {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--text-main);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            padding: 140px 0 100px 0;
+            background: radial-gradient(circle at 80% 20%, rgba(78, 156, 39, 0.15) 0%, transparent 50%),
+                        linear-gradient(var(--bg-dark), var(--bg-dark));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-max {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* --- FLOATING STATS BAR --- */
+        .stats-bar {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .stat-item h3 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-section {
+            padding: 100px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 17px;
+        }
+
+        /* --- GRID PREMIUM SERVICES --- */
+        .services-section {
+            background: linear-gradient(var(--bg-dark), #091709, var(--bg-dark));
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+        }
+
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .premium-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .premium-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(78, 156, 39, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+
+        .card-icon {
+            width: 54px;
+            height: 54px;
+            background: rgba(78, 156, 39, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .premium-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .premium-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: auto;
+            padding-bottom: 20px;
+        }
+
+        .card-link {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* --- CONTACT & ESTIMATE FORM SECTION --- */
+        .contact-section {
+            padding: 100px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 50px;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .info-row a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .info-row a:hover {
+            color: var(--primary);
+        }
+
+        .info-icon {
+            font-size: 20px;
+            color: var(--primary);
+        }
+
+        .form-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 32px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #030a03;
+            padding: 80px 0 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 16px;
+            max-width: 320px;
+        }
+
+        .footer-nav h4, .footer-contact h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+        }
+
+        .footer-nav ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-nav ul a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-nav ul a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 44px; }
+        }
+
+        @media (max-width: 768px) {
+            nav, .nav-wrapper .btn { display: none; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .contact-grid { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="logo">JJE <span>LAWN CARE</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="#contact" class="btn btn-primary">Free Estimate</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-max">
+                <h1><span>Making Lawns Beautiful.</span> <em>Keeping Customers For Life.</em></h1>
+                <p>Top-tier local lawn care and property maintenance services across Lancaster. From flawless weekly mowing trims to total yard transformations—we deliver landscape perfection every single time.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Request Free Estimate</a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Satisfaction Guaranteed</p>
+            </div>
+            <div class="stat-item">
+                <h3>Lancaster</h3>
+                <p>Locally Owned & Operated</p>
+            </div>
+            <div class="stat-item">
+                <h3>Reliable</h3>
+                <p>Scheduled Timely Runs</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <span class="section-tag">About Our Business</span>
+                <h2>Lancaster Local. Reliable. Focused on Perfect Quality.</h2>
+                <p>JJE Lawn & Landscaping is built on a foundation of absolute consistency, clear and honest communication, and professional results that instantly turn heads in your neighborhood.</p>
+                <p>Whether your property is a cozy backyard patch or an expansive multi-acre estate lot, we utilize high-caliber equipment paired with seasoned experience to complete the task flawlessly. Your yard is our proudest business card.</p>
+                <a href="#contact" class="btn btn-secondary" style="margin-top: 10px;">Get An Estimate</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Services</span>
+                <h2>How Can We Transform Your Property?</h2>
+            </div>
+
+            <div class="premium-grid">
+                <div class="premium-card">
+                    <div class="card-icon">🚜</div>
+                    <h3>Lawn Mowing</h3>
+                    <p>Clean patterns, precise edges, and thorough clippings cleanup for a crisp, healthy yard setup.</p>
+                    <a href="#contact" class="card-link">Book Now &rarr;</a>
+                </div>
+                <div class="premium-card">
+                    <div class="card-icon">🌱</div>
+                    <h3>Mulching</h3>
+                    <p>Premium mulch layers carefully installed to suppress pesky weeds and retain essential soil moisture.</p>
+                    <a href="#contact" class="card-link">Book Now &rarr;</a>
+                </div>
+                <div class="premium-card">
+                    <div class="card-icon">🌳</div>
+                    <h3>Tree Trimming</h3>
+                    <p>Carefully keeping limbs sculpted, vibrant, structured safely, and completely out of roof lines.</p>
+                    <a href="#contact" class="card-link">Book Now &rarr;</a>
+                </div>
+                <div class="premium-card">
+                    <div class="card-icon">🌾</div>
+                    <h3>Edging & Trim</h3>
+                    <p>Razor-sharp boundaries along your paved driveways, concrete walkways, and custom landscape flower beds.</p>
+                    <a href="#contact" class="card-link">Book Now &rarr;</a>
+                </div>
+                <div class="premium-card">
+                    <div class="card-icon">🍂</div>
+                    <h3>Leaf Cleanup</h3>
+                    <p>Fast, meticulous clearing of seasonal lawn debris protecting your delicate turf from suffocating.</p>
+                    <a href="#contact" class="card-link">Book Now &rarr;</a>
+                </div>
+                <div class="premium-card">
+                    <div class="card-icon">❄️</div>
+                    <h3>Snow Removal</h3>
+                    <p>Dependable winter snow pushing and salt applications keeping pathways clear and safely walkable.</p>
+                    <a href="#contact" class="card-link">Book Now &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container contact-section" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <span class="section-tag">Get a Quote</span>
+                <h2>Ready for a beautiful lawn?</h2>
+                <p>Fill out our short form, and we will get back to you with a free, custom estimate completely tailored to your yard's specific needs.</p>
+                
+                <div class="info-row">
+                    <div class="info-icon">📞</div>
+                    <div><strong>Call / Text:</strong> <a href="tel:7173144269">(717) 314-4269</a></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">✉️</div>
+                    <div><strong>Email:</strong> <a href="mailto:jjelawncare@gmail.com">jjelawncare@gmail.com</a></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">📍</div>
+                    <div><strong>Service Area:</strong> Lancaster Only</div>
+                </div>
+            </div>
+
+            <div class="form-card">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! This form is ready for a backend integration.');">
+                    <div class="form-group">
+                        <label>Your Full Name</label>
+                        <input type="text" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="(717) 314-4269" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Service Needed</label>
+                        <select class="form-control">
+                            <option>Weekly Lawn Mowing</option>
+                            <option>Mulch Installation</option>
+                            <option>Full Yard Leaf Cleanup</option>
+                            <option>Other / Landscaping</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Property Address / Notes</label>
+                        <textarea class="form-control" rows="3" placeholder="Tell us about your property size..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Estimate Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">JJE <span>LAWN CARE</span></a>
+                <p>Proudly serving Lancaster with meticulous attention to detail and elite customer service standards.</p>
+            </div>
+            <div class="footer-nav">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Connect With Us</h4>
+                <p style="color: var(--text-muted); margin-bottom: 12px;">Check out our recent work profiles, updates, and reviews online!</p>
+                <a href="#" class="btn btn-secondary" style="padding: 8px 16px; font-size: 13px;">👍 Like Us On Facebook</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 JJE Lawn & Landscaping. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
